@@ -1,0 +1,15 @@
+.h3 {
+  text-shadow:
+  -1px 0px 0px black,
+  1px 0px 0px black,
+  0px -1px 0px black,
+  0px 1px 0px black;
+  }
+
+.font {
+    font-family : unicorn;
+  }
+  @font-face {
+    font-family: unicorn;
+    src: url("../../../public/fonts/Dreamwood\ PERSONAL\ USE\ ONLY.ttf");
+  }

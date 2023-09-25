@@ -1,0 +1,10 @@
+
+
+.font {
+  font-family : unicorn;
+
+}
+@font-face {
+  font-family: unicorn;
+  src: url("../../../public/fonts/BadUnicornDemoRegular-BVWx.ttf");
+}

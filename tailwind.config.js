@@ -15,4 +15,7 @@ module.exports = {
     },
   },
   plugins: [],
+  fontFamily: {
+    unicorn: ['unicorn'],
+  },
 }
