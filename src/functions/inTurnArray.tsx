@@ -5,7 +5,7 @@ function inTurnArray() {
 
 
   let wordsArray = getWordsArray()
-  let now = new Date()
+
 
 
   let inTurn : any[] = []

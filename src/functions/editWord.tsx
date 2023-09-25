@@ -5,11 +5,11 @@ function editWord(englishx : string, meaningx : string, before : string) : void 
     let dataxx = JSON.parse(dataX)
     let data = {...dataxx}
     let his = data.data.words[before].test
-    let ttlx = data.data.words[before].ttl
+    let ttlx = data.data.words[before].ltt
     let lev = data.data.words[before].level
     delete data.data.words[before]
 
-    data.data.words[englishx] = {meaning : meaningx, level : lev, test : his, ttl : ttlx}
+    data.data.words[englishx] = {meaning : meaningx, level : lev, test : his, ltt : ttlx}
 
     localStorage.setItem('magic_notebook', JSON.stringify(data))
     

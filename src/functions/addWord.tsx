@@ -11,7 +11,7 @@ function addWord(w : {
             meaning : w.secend,
             level : 1,
             test : [],
-            ttl : []
+            ltt : []
         }
         localStorage.setItem('magic_notebook' ,JSON.stringify(datax))
         return(1)
