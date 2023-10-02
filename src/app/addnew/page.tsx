@@ -106,7 +106,7 @@ function Addnew() {
     .then(res=>res.json()).then(res=>{
       console.log(res)
       if(res[0].phonetics.length>0) {
-        res[0].phonetics.map(x=>{
+        res[0].phonetics.map((x: { audio: any})=>{
             if(x.audio.length>0){
                 setaudioURL(x.audio)
             }
