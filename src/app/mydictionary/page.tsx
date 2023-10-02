@@ -44,16 +44,23 @@ function Mydictionary() {
     setst(1)
   }, [])
  
+  const testC = ()=> {
+
+
+  }
 
   return (
         <>
             <Back title={'Home'} hr={'/'} />
             <div className='flex flex-col-reverse md:flex-row justify-center md:justify-between md:pe-[9rem] lg:ps-[10rem] gap-5'>
-              <div className='flex justify-center'>
+              <div onClick={testC} className='flex z-40 justify-center'>
                 <DictionaryCard tw={values.total.length} lw={values.learned.length} />
               </div>
+              <div className='z-50'>
+              <SearchWord words={values} />
+              </div>
 
-              <SearchWord />
+
             </div>
             <div className='w-[98vw] lg:w-[90vw] h-[55vh] md:h-fit lg:pt-[10vh] overflow-y-scroll lg:overflow-hidden ms-[1vw] lg:ms-[5vw] flex flex-wrap justify-center pt-5 gap-1 lg:gap-2'>
               {st?

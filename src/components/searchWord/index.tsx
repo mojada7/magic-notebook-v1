@@ -1,8 +1,55 @@
-import React from 'react'
+'use clinet'
+import Link from 'next/link'
+import React, { useState } from 'react'
 
-function SearchWord() {
+function SearchWord({words}:any) {
+
+  const [serachRes, setsearchRes] = useState([])
+
+
+  const changeHandler =(e:any)=> {
+    let searchedWord = e.target.value
+    
+    let swAr = searchedWord.split('')
+
+    let pattern = new RegExp(`${searchedWord}.*`)
+
+
+
+    let sRes = words.total.filter(w=>{
+      return pattern.test(w.english)
+    })
+
+
+    setsearchRes(sRes)
+    searchedWord==''&&setsearchRes([])
+  }
+
+
   return (
-    <input className='w-[18rem] md:w-[25rem] lg:w-[32rem] h-[3rem] mt-1 rounded-e-full border-[4px] border-sky-200 bg-white text-center placeholder-sky-400' placeholder='Search word here ...'></input>
+    <div className='w-[18rem] md:w-[25rem] lg:w-[32rem] h-[3rem] overflow-visible'>
+      <div>
+        <input onChange={(e)=> changeHandler(e)} className='w-[18rem] md:w-[25rem] lg:w-[32rem] h-[3rem] mt-1 rounded-e-full border-[4px] border-sky-200 bg-white text-center placeholder-sky-400' placeholder='Search word here ...'></input>
+      </div>
+      {
+        (serachRes.length>0)?(
+          <div className='w-[17rem] h-[10rem] md:w-[24rem] overflow-hidden z-50 lg:w-[31rem]'>
+            {serachRes.map(w=>{
+              return(
+                <Link key={w.english} href={`/mydictionary/${w.english[0]}`} >
+                  <div  className='w-full bg-white ps-4 pt-[1px] z-50 border-[2px] border-sky-200 hover:bg-sky-100 h-[2rem]'>
+                    {w.english}
+                  </div>
+                </Link>
+
+              )
+            })}
+
+          </div>   
+        ):null
+      }
+
+    </div>
   )
 }
 

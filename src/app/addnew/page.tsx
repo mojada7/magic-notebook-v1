@@ -4,7 +4,8 @@ import Image from 'next/image'
 import React, { useRef, useState } from 'react'
 import add from '../../../public/pics/mainpic1.png'
 import addWord from '@/functions/addWord'
-
+import magic from '../../../public/pics/magic-wand.png'
+import sound from '../../../public/pics/audio.png'
 function Addnew() {
   const eref : any = useRef(null)
   const sref : any = useRef(null)
@@ -13,7 +14,8 @@ function Addnew() {
     secend : ''
   })
   const [cardMode, setcardMode] = useState(0)
-
+  const audioRef = useRef(null)
+  const [audioURL, setaudioURL] = useState('')
   const addWordx = () : void => {
     if(addWord(inputData)) {
       eref.current.value = ""
@@ -42,12 +44,75 @@ function Addnew() {
   }
   const yesClickHandler = (): void=> {
     addWordx()
+    fetch('/api', {
+      method : "POST",
+      headers : {
+        "Content-Type" : "application/json",
+      },
+      body : JSON.stringify({
+        word : inputData.english,
+        meaning : inputData.secend,
+        difficulty : 1
+      })
+    })
   }
   const editeClickHandler = (): void=> {
     setcardMode(0)
   }
-  const sucClickHandler = (): void=> {
+
+  const sendWord = (dif:Number) => {
+
+    fetch('/api', {
+      method : "POST",
+      headers : {
+        "Content-Type" : "application/json"
+      },
+      body : JSON.stringify({
+        word : inputData.english.toLowerCase(),
+        meaning : inputData.secend,
+        difficulty : dif
+      })
+    }).then(res=>res.json()).then(res=>console.log(res)).catch(er=>console.log(er))
+
+  }
+
+
+  const eClickHandler = (e:any): void=> {
     setcardMode(0)
+    sendWord(1)
+  }
+  const mClickHandler = (e:any): void=> {
+    setcardMode(0)
+    sendWord(2)
+  }
+  const hClickHandler = (e:any): void=> {
+    setcardMode(0)
+    sendWord(3)
+  }
+  const translateClickHandler = (e:any) => {
+    fetch(`https://one-api.ir/translate/?token=818351:651929dfbabb8&action=google&lang=fa&q=${inputData.english}`)
+    .then(res=>res.json()).then(res=>{
+      if(res.status==200) {
+        setinputData({
+          english : inputData.english,
+          secend : res.result
+        })
+        sref.current.value = res.result
+      }
+    }).catch(er=>console.log(er))
+  }
+  const soundClickHandler = (e:any) => {
+    fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${inputData.english}`)
+    .then(res=>res.json()).then(res=>{
+      console.log(res)
+      if(res[0].phonetics.length>0) {
+        res[0].phonetics.map(x=>{
+            if(x.audio.length>0){
+                setaudioURL(x.audio)
+            }
+        })
+    }
+    }).catch(er=>console.log(er))
   }
 
   return (
@@ -55,9 +120,22 @@ function Addnew() {
       <Back title={'Home'} hr={'/'} />
       <div className='z-20 flex flex-col items-center justify-center pt-[10vh]'>
         <Image src={add} alt='' width={100} />
-        <input ref={eref} onChange={(e)=> eChangeHandler(e)} className='w-[24rem] lg:w-[28rem] h-[5rem] text-center rounded-xl placeholder-pink-300 text-2xl text-pink-400 border-[6px] border-sky-200 mt-8 font-bold' placeholder='Type new English word here ...' />
-        <input ref={sref} onChange={(e)=> sChangeHandler(e)} className='w-[24rem] lg:w-[28rem] h-[5rem] text-center rounded-xl placeholder-sky-300 text-2xl text-sky-400 border-[6px] border-sky-200 mt-4 font-bold' placeholder='Persian translation here ...' />
-        <button onClick={(e)=>addClickHandler(e)} className='mt-[3rem] w-[12rem] h-[4rem] bg-pink-400 hover:bg-pink-300 text-white text-2xl rounded-full border-[6px] border-sky-200'>
+        <div className='flex mt-8'>
+          <input ref={eref} onChange={(e)=> eChangeHandler(e)} className='w-[20rem] lg:w-[24rem] h-[5rem] text-center rounded-xl placeholder-pink-300 text-xl text-pink-400 border-[6px] border-e-0 rounded-e-none border-sky-200 mt-4 font-bold' placeholder='Type new English word here ...' />
+          <audio autoPlay ref={audioRef} src={audioURL} />
+          <button onClick={(e)=>soundClickHandler(e)} className='w-[4rem] mt-4 ps-3 text-md text-white hover:bg-sky-300 h-[5rem] rounded-lg border-[6px] bg-sky-200 rounded-s-none border-s-0 border-sky-200'>
+            <Image src={sound} width={40} alt='sound' />
+          </button>
+        </div>
+       
+        <div className='flex'>
+          <input ref={sref} onChange={(e)=> sChangeHandler(e)} className='w-[20rem] lg:w-[24rem] h-[5rem] text-center rounded-xl placeholder-sky-300 text-xl text-sky-400 border-[6px] border-e-0 rounded-e-none border-sky-200 mt-4 font-bold' placeholder='Persian translation here ...' />
+          <button onClick={(e)=>translateClickHandler(e)} className='w-[4rem] mt-4 ps-3 text-md text-white hover:bg-sky-300 h-[5rem] rounded-lg border-[6px] bg-sky-200 rounded-s-none border-s-0 border-sky-200'>
+            <Image src={magic} width={40} alt='magic translate' />
+          </button>
+        </div>
+       
+        <button onClick={(e)=>addClickHandler(e)} className='mt-[3rem] w-[16rem] h-[4rem] bg-pink-400 hover:bg-pink-300 text-white text-2xl rounded-full border-[6px] border-sky-200'>
             <span className='text-2xl'>{'+ '}</span>
             Add
         </button>
@@ -97,10 +175,14 @@ function Addnew() {
       {
         cardMode==3&&(
           <div className='w-[100vw] h-[70vh] bg-sky-300 fixed top-[28vh] flex flex-col items-center'>
-            <div className='text-sky-400 bg-white border-[5px] border-sky-200 rounded-xl px-4 py-2 text-4xl mt-32 text-center'>
-              Succesfully saved!
+            <div className='text-sky-400 bg-white border-[5px] border-sky-200 rounded-xl px-4 py-2 mt-32 text-center text-xl font-semibold'>
+              How do you evaluate difficulty of this word?
             </div>
-            <button onClick={sucClickHandler} className='bg-blue-400 mt-16 hover:bg-blue-300 text-2xl border-[4px] border-sky-200 py-3 w-[8rem] rounded-2xl text-center text-white'>OK</button>
+            <div className='mt-16 flex gap-4'>
+              <button onClick={(e)=>eClickHandler(e)} className='w-[6rem] text-white text-lg rounded-lg border-[4px] font-semibold border-sky-200 h-[3rem] bg-green-400'>Easy</button>
+              <button onClick={(e)=>mClickHandler(e)} className='w-[6rem] text-white text-lg rounded-lg border-[4px] font-semibold border-sky-200 h-[3rem] bg-yellow-400'>Medium</button>
+              <button onClick={(e)=>hClickHandler(e)} className='w-[6rem] text-white text-lg rounded-lg border-[4px] font-semibold border-sky-200 h-[3rem] bg-pink-400'>Hard</button>
+            </div>
         </div>
         )
       }

@@ -6,8 +6,8 @@ function addWord(w : {
     let datax : any 
     datax = localStorage.getItem('magic_notebook')
     datax = JSON.parse(datax)
-    if(datax.data.words[`${w.english}`] == null ) {
-        datax.data.words[`${w.english}`] = {
+    if(datax.data.words[`${w.english.toLowerCase()}`] == null ) {
+        datax.data.words[`${w.english.toLowerCase()}`] = {
             meaning : w.secend,
             level : 1,
             test : [],

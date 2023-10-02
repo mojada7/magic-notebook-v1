@@ -8,11 +8,11 @@ import Timer from '@/components/timet'
 import injection from '@/functions/injection'
 import inTurnArray from '@/functions/inTurnArray'
 import testResault from '@/functions/testResault'
+import Link from 'next/link'
 
 function DailyTest() {
 
   const [main , setmain] = useState(0)
-
   const [step, setstep] = useState(0)
   const [fw, setfw] = useState({english:'', meaning: ''})
   const [tw, settw] = useState([{english:'', second: ''}])
@@ -30,13 +30,31 @@ function DailyTest() {
     setmain(1)
   }
 
-  console.log(randomIndex)
 
-
+const [wd1, setwd1] = useState([''])
+const [wd2, setwd2] = useState([''])
+const [wd3, setwd3] = useState([''])
 
   useEffect(()=> {
     let inTurn = inTurnArray()
     settw(inTurn)
+    fetch(`/api/1`).then(res=>res.json()).then(res=>{
+      const data = res.data
+      let nr = [data[data.length-1].word, data[data.length-2].word, data[data.length-3].word]
+      setwd1(nr)
+    }
+      ).catch(er=>console.log(er))
+
+    fetch(`/api/2`).then(res=>res.json()).then(res=>{
+      const data = res.data
+      let nr = [data[data.length-1].word, data[data.length-2].word, data[data.length-3].word]
+      setwd2(nr)
+    }).catch(er=>console.log(er))
+    fetch(`/api/3`).then(res=>res.json()).then(res=>{
+      const data = res.data
+      let nr = [data[data.length-1].word, data[data.length-2].word, data[data.length-3].word]
+      setwd3(nr)
+    }).catch(er=>console.log(er))
 
   },[])
 
@@ -93,7 +111,7 @@ function DailyTest() {
         {
           main?(
             <>
-            <div className='text-4xl font-bold text-sky-500 w-[95vw] md:w-[24rem] mt-6 h-[12vh] md:h-[8rem] bg-white border-[5px] border-sky-200 rounded-xl text-center flex justify-center items-center'>
+            <div className='text-3xl font-bold text-sky-500 w-[95vw] md:w-[24rem] mt-12 h-[12vh] md:h-[8rem] bg-white border-[5px] border-sky-200 rounded-xl text-center flex justify-center items-center'>
             <div>
               {fw.english}
             </div>
@@ -108,7 +126,7 @@ function DailyTest() {
               </>
             ):(
               <>
-                <div className='text-4xl font-bold text-pink-400 w-[95vw] md:w-[24rem] mt-1 h-[12vh] md:h-[8rem] bg-white border-[5px] border-sky-200 rounded-xl text-center flex justify-center items-center'>
+                <div className='text-3xl font-bold text-pink-400 w-[95vw] md:w-[24rem] mt-1 h-[12vh] md:h-[8rem] bg-white border-[5px] border-sky-200 rounded-xl text-center flex justify-center items-center'>
                   <div>
                   {
                     fw.meaning
@@ -116,10 +134,10 @@ function DailyTest() {
                   </div>
 
                 </div>
-                <div className='flex flex-col lg:flex-row justify-center gap-1 mt-6'>
-                  <button onClick={(e)=> ikClickHnadler(e)} className='w-[90vw] md:w-[20rem] hover:scale-105 text-xl font-semibold text-white rounded-full border-[4px] border-sky-200 bg-cyan-400 h-[7vh] md:h-[4rem]'>I knew</button>
-                  <button onClick={(e)=> dClickHnadler(e)} className='w-[90vw] md:w-[20rem] hover:scale-105 text-xl font-semibold text-white rounded-full border-[4px] border-sky-200 bg-yellow-400 h-[7vh] md:h-[4rem]'>knew with doubt</button>
-                  <button onClick={(e)=> dkClickHnadler(e)} className='w-[90vw] md:w-[20rem] hover:scale-105 text-xl font-semibold text-white rounded-full border-[4px] border-sky-200 bg-pink-400 h-[7vh] md:h-[4rem]'>I did not know</button>
+                <div className='flex flex-col lg:flex-row justify-center gap-3 mt-12'>
+                  <button onClick={(e)=> ikClickHnadler(e)} className='w-[60vw] md:w-[20rem] hover:scale-105 text-xl font-semibold text-white rounded-full border-[4px] border-sky-200 bg-green-400 h-[7vh] md:h-[4rem]'>I knew</button>
+                  <button onClick={(e)=> dClickHnadler(e)} className='w-[60vw] md:w-[20rem] hover:scale-105 text-xl font-semibold text-white rounded-full border-[4px] border-sky-200 bg-yellow-300 h-[7vh] md:h-[4rem]'>knew with doubt</button>
+                  <button onClick={(e)=> dkClickHnadler(e)} className='w-[60vw] md:w-[20rem] hover:scale-105 text-xl font-semibold text-white rounded-full border-[4px] border-sky-200 bg-rose-400 h-[7vh] md:h-[4rem]'>I did not know</button>
                 </div>
 
               </>
@@ -132,9 +150,26 @@ function DailyTest() {
             </>
 
           ):(
-            <div className='w-full h-[20rem] bg-sky-300 flex justify-center items-center'>
-              <div className='text-white text-4xl'>
-                no words enough!
+            <div className='w-full h-[20rem] bg-sky-300 flex flex-col justify-center items-center mt-16'>
+              <div className='text-white text-lg w-[80vw] text-center'>
+                <span className='pe-2 text-2xl'>
+                No words enough! 
+                </span>
+                you can expand your vocablurary by select your decent catagory : 
+              </div>
+              <div className='mt-8'>
+                <Link href={'/dailytest/1'} >
+                  <div className='w-[18rem] border-[4px] border-sky-200 h-[3rem] rounded-xl text-center py-2 mt-4 text-white hover:bg-sky-300 bg-sky-400 font-bold'>Easy</div>
+                </Link>
+                <div className='h-[8px] text-sm ps-2 text-white pt-[2px]'>words like : {wd1[0]}, {wd1[1]}, {wd1[2]}</div>
+                <Link href={'/dailytest/2'} >
+                  <div className='w-[18rem] border-[4px] border-sky-200 h-[3rem] rounded-xl text-center py-2 mt-4 text-white hover:bg-yellow-200 bg-yellow-300 font-bold'>Medium</div>
+                </Link>
+                  <div className='h-[8px] text-sm ps-2 text-white pt-[2px]'>words like : {wd2[0]}, {wd2[1]}, {wd2[2]}</div>
+                <Link href={'/dailytest/3'} >
+                  <div className='w-[18rem] border-[4px] border-sky-200 h-[3rem] rounded-xl text-center py-2 mt-4 text-white hover:bg-pink-300 bg-pink-400 font-bold'>advanced</div>
+                </Link>
+                <div className='h-[8px] text-sm ps-2 text-white pt-[2px]'>words like : {wd3[0]}, {wd3[1]}, {wd3[2]}</div>
               </div>
             </div>
           )

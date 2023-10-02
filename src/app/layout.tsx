@@ -17,10 +17,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <main className='bg-sky-300 h-[100vh]'>
           <Header />
-          {children}
-        </main>
+          <div className='pt-1'>
+            {children}
+          </div>
       </body>
     </html>
   )

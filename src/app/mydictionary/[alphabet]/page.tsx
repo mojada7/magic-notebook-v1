@@ -79,6 +79,8 @@ function Alphabet() {
           }
         ) 
         setst(1)
+
+
       },[params.alphabet])
 
 
