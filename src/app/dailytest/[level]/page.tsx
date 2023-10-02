@@ -75,11 +75,13 @@ function Level() {
 
 
     useEffect(()=>{
-      let ws = getUserLS()
+      let ws : any
+      ws = getUserLS()
       let savedWords = JSON.parse(ws)
       let sw = savedWords.data.words
       fetch(`/api/${params.level}`).then(res=>res.json()).then(res=>{
-        let words = res.data
+        let words : any[]
+        words = res.data
         let finalWords = words.filter(w=>{
           return !sw[w.word]
         })
@@ -97,7 +99,7 @@ function Level() {
 
 
 
-    },[])
+    },[params.level])
 
 
 
