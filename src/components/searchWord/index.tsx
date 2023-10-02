@@ -16,7 +16,7 @@ function SearchWord({words}:any) {
 
 
 
-    let sRes = words.total.filter(w=>{
+    let sRes = words.total.filter((w:any)=>{
       return pattern.test(w.english)
     })
 
@@ -34,7 +34,7 @@ function SearchWord({words}:any) {
       {
         (serachRes.length>0)?(
           <div className='w-[17rem] h-[10rem] md:w-[24rem] overflow-hidden z-50 lg:w-[31rem]'>
-            {serachRes.map(w=>{
+            {serachRes.map((w : any)=>{
               return(
                 <Link key={w.english} href={`/mydictionary/${w.english[0]}`} >
                   <div  className='w-full bg-white ps-4 pt-[1px] z-50 border-[2px] border-sky-200 hover:bg-sky-100 h-[2rem]'>
