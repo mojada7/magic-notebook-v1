@@ -20,7 +20,7 @@ function WordCard({wrd, mean, his, lev} : {
 
     const [audioURL, setaudioURL] = useState('')
 
-    const audioRef = useRef(null)
+    const audioRef : any = useRef(null)
 
     const editeHandler = (e : any)=> {
         setinputs({
@@ -94,7 +94,7 @@ function WordCard({wrd, mean, his, lev} : {
             
         console.log(res)
         if(res[0].phonetics.length>0) {
-                res[0].phonetics.map(x=>{
+                res[0].phonetics.map((x:any)=>{
                     if(x.audio.length>0){
                         setaudioURL(x.audio)
                     }
