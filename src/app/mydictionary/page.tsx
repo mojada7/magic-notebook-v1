@@ -51,12 +51,16 @@ function Mydictionary() {
 
   return (
         <>
-            <Back title={'Home'} hr={'/'} />
-            <div className='flex flex-col-reverse md:flex-row justify-center md:justify-between md:pe-[9rem] lg:ps-[10rem] gap-5'>
-              <div onClick={testC} className='flex z-40 justify-center'>
+
+<Back title={'Home'} hr={'/'} />
+
+            <div className='flex z-40 flex-col-reverse md:flex-row justify-center md:justify-between md:pe-[9rem] lg:ps-[10rem] gap-5'>
+
+
+              <div onClick={testC} className='flex z-20 justify-center'>
                 <DictionaryCard tw={values.total.length} lw={values.learned.length} />
               </div>
-              <div className='z-50'>
+              <div className='z-20'>
               <SearchWord words={values} />
               </div>
 
