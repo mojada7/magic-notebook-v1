@@ -120,17 +120,17 @@ function Addnew() {
       <Back title={'Home'} hr={'/'} />
       <div className='z-20 flex flex-col items-center justify-center pt-[6vh]'>
         <Image src={add} alt='' width={100} />
-        <div className='flex mt-8 rounded-xl border-[6px] border-sky-200'>
-          <input ref={eref} onChange={(e)=> eChangeHandler(e)} className='w-[80vw] lg:w-[24rem] h-[5rem] text-center  placeholder-pink-300 text-xl text-pink-400 border-sky-200 font-bold' placeholder='Type new English word here ...' />
+        <div className='flex mt-8 rounded-xl border-[6px] border-sky-400'>
+          <input ref={eref} onChange={(e)=> eChangeHandler(e)} className='w-[80vw] lg:w-[24rem] h-[5rem] text-center rounded-s-md placeholder-pink-300 text-xl text-pink-400 border-sky-200 font-bold' placeholder='Type new English word here ...' />
           <audio autoPlay ref={audioRef} src={audioURL} />
-          <button onClick={(e)=>soundClickHandler(e)} className='w-[4rem] ps-3 text-md text-white hover:bg-sky-300 h-[5rem] rounded-lg border-[6px] bg-sky-200 rounded-s-none border-s-0 border-sky-200'>
+          <button onClick={(e)=>soundClickHandler(e)} className='w-[4rem] ps-3 text-md text-white hover:bg-sky-300 h-[5rem] rounded-md border-[6px] bg-sky-200 rounded-s-none border-s-0 border-sky-200'>
             <Image src={sound} width={40} alt='sound' />
           </button>
         </div>
        
-        <div className='flex rounded-xl border-[6px] mt-4 border-sky-200'>
-          <input ref={sref} onChange={(e)=> sChangeHandler(e)} className='w-[80vw] lg:w-[24rem] h-[5rem] text-center placeholder-sky-300 text-xl text-sky-400 font-bold' placeholder='Persian translation here ...' />
-          <button onClick={(e)=>translateClickHandler(e)} className='w-[4rem] ps-3 text-md text-white hover:bg-sky-300 h-[5rem] rounded-lg border-[6px] bg-sky-200 rounded-s-none border-s-0 border-sky-200'>
+        <div className='flex rounded-xl border-[6px] mt-4 border-pink-300'>
+          <input ref={sref} onChange={(e)=> sChangeHandler(e)} className='w-[80vw] lg:w-[24rem] h-[5rem] text-center rounded-s-md placeholder-sky-300 text-xl text-sky-400 font-bold' placeholder='Persian translation here ...' />
+          <button onClick={(e)=>translateClickHandler(e)} className='w-[4rem] ps-3 text-md text-white hover:bg-pink-300 h-[5rem] rounded-md border-[6px] bg-pink-200 rounded-s-none border-s-0 border-pink-200'>
             <Image src={magic} width={40} alt='magic translate' />
           </button>
         </div>

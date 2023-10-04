@@ -14,7 +14,7 @@ function MainItem({title, pic, hr, text} : any) {
               <Image src={pic} alt='' width={100}/>
             </div>
             <div className={`text-xl text-start ms-2 lg:ms-6 lg:text-2xl lg:w-[18rem]`}>
-              <div className='w-[10rem] lg:w-[12rem]'>              
+              <div className='w-[10rem] text-pink-400 lg:w-[12rem]'>              
                 {title} 
               </div>
               <div className='text-xs mt-2 text-left md:text-md w-[10rem] lg:w-[12rem]'>              

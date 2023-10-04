@@ -1,6 +1,7 @@
 import Header from '@/components/header'
 import './globals.css'
 import { Inter } from 'next/font/google'
+import CloudScene from '@/components/cluodScene'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,6 +21,7 @@ export default function RootLayout({
           <Header />
           <div className='pt-1'>
             {children}
+            <CloudScene />
           </div>
       </body>
     </html>

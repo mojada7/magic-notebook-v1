@@ -111,7 +111,7 @@ const [wd3, setwd3] = useState([''])
         {
           main?(
             <>
-            <div className='text-3xl font-bold text-sky-500 w-[95vw] md:w-[24rem] mt-12 h-[12vh] md:h-[8rem] bg-white border-[5px] border-sky-200 rounded-xl text-center flex justify-center items-center'>
+            <div className='text-3xl font-bold text-sky-500 w-[95vw] md:w-[24rem] mt-12 h-[12vh] md:h-[8rem] bg-white border-[5px] border-sky-400 rounded-xl text-center flex justify-center items-center'>
             <div>
               {fw.english}
             </div>
@@ -126,7 +126,7 @@ const [wd3, setwd3] = useState([''])
               </>
             ):(
               <>
-                <div className='text-3xl font-bold text-pink-400 w-[95vw] md:w-[24rem] mt-1 h-[12vh] md:h-[8rem] bg-white border-[5px] border-sky-200 rounded-xl text-center flex justify-center items-center'>
+                <div className='text-3xl font-bold text-pink-400 w-[95vw] md:w-[24rem] mt-1 h-[12vh] md:h-[8rem] bg-white border-[5px] border-pink-300 rounded-xl text-center flex justify-center items-center'>
                   <div>
                   {
                     fw.meaning
@@ -135,9 +135,9 @@ const [wd3, setwd3] = useState([''])
 
                 </div>
                 <div className='flex flex-col lg:flex-row justify-center gap-3 mt-12'>
-                  <button onClick={(e)=> ikClickHnadler(e)} className='w-[60vw] md:w-[20rem] hover:scale-105 text-xl font-semibold text-white rounded-full border-[4px] border-sky-200 bg-green-400 h-[7vh] md:h-[4rem]'>I knew</button>
-                  <button onClick={(e)=> dClickHnadler(e)} className='w-[60vw] md:w-[20rem] hover:scale-105 text-xl font-semibold text-white rounded-full border-[4px] border-sky-200 bg-yellow-300 h-[7vh] md:h-[4rem]'>knew with doubt</button>
-                  <button onClick={(e)=> dkClickHnadler(e)} className='w-[60vw] md:w-[20rem] hover:scale-105 text-xl font-semibold text-white rounded-full border-[4px] border-sky-200 bg-rose-400 h-[7vh] md:h-[4rem]'>I did not know</button>
+                  <button onClick={(e)=> ikClickHnadler(e)} className='w-[60vw] md:w-[20rem] hover:scale-105 text-xl font-bold text-white rounded-full border-[4px] border-sky-200 bg-green-400 h-[7vh] md:h-[4rem]'>I knew</button>
+                  <button onClick={(e)=> dClickHnadler(e)} className='w-[60vw] md:w-[20rem] hover:scale-105 text-xl font-bold text-white rounded-full border-[4px] border-sky-200 bg-yellow-400 h-[7vh] md:h-[4rem]'>knew with doubt</button>
+                  <button onClick={(e)=> dkClickHnadler(e)} className='w-[60vw] md:w-[20rem] hover:scale-105 text-xl font-bold text-white rounded-full border-[4px] border-sky-200 bg-rose-400 h-[7vh] md:h-[4rem]'>I did not know</button>
                 </div>
 
               </>

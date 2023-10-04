@@ -6,7 +6,7 @@ import Cloud from '../cloudbg'
 function Header() {
   return (
     <>
-    <div className='border-b-[8px] lg:border-b-[16px] bg-white text-black border-yellow-300'>
+    <div className='border-b-[8px] lg:border-b-[16px] bg-sky-200 text-black border-yellow-300'>
       <div className='border-b-[8px] lg:border-b-[16px] border-pink-300'>
         <div className='w-full flex ps-2 lg:ps-5 pt-2 items-end h-[8vh] lg:h-[12vh] border-b-[8px] lg:border-b-[16px] border-sky-400 z-50'>
             <div className='mb-2 lg:scale-150'>

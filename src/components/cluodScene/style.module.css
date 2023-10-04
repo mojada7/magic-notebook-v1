@@ -1,0 +1,32 @@
+.motion1 {
+    animation: cloudMotion 300s;
+    animation-iteration-count: infinite;
+}
+.motion2 {
+    animation: cloudMotion 250s;
+    animation-iteration-count: infinite;
+}
+.motion3 {
+    animation: cloudMotion 200s;
+    animation-iteration-count: infinite;
+}
+.motion4 {
+    animation: cloudMotion 200s;
+    animation-iteration-count: infinite;
+}
+
+
+
+
+@keyframes cloudMotion {
+
+    0% {
+        left : -50vw;
+    }
+    50% {
+        left: 50vw;
+    }
+    100% {
+        left : -50vw;
+    }
+}
