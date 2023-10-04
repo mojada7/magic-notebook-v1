@@ -11,7 +11,23 @@
     animation-iteration-count: infinite;
 }
 .motion4 {
-    animation: cloudMotion 200s;
+    animation: cloudMotion 150s;
+    animation-iteration-count: infinite;
+}
+.motion11 {
+    animation: cloudMotion 100s;
+    animation-iteration-count: infinite;
+}
+.motion21 {
+    animation: cloudMotion 70s;
+    animation-iteration-count: infinite;
+}
+.motion31 {
+    animation: cloudMotion 50s;
+    animation-iteration-count: infinite;
+}
+.motion41 {
+    animation: cloudMotion 30s;
     animation-iteration-count: infinite;
 }
 
