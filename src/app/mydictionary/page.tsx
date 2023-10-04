@@ -52,7 +52,7 @@ function Mydictionary() {
   return (
         <>
 
-<Back title={'Home'} hr={'/'} />
+          <Back title={'Home'} hr={'/'} />
 
             <div className='flex z-40 flex-col-reverse md:flex-row justify-center md:justify-between md:pe-[9rem] lg:ps-[10rem] gap-5'>
 

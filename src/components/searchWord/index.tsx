@@ -27,13 +27,13 @@ function SearchWord({words}:any) {
 
 
   return (
-    <div className='w-[18rem] md:w-[25rem] lg:w-[32rem] h-[3rem] overflow-visible'>
+    <div className='w-[70vw] md:w-[25rem] lg:w-[32rem] h-[3rem] overflow-visible'>
       <div>
-        <input onChange={(e)=> changeHandler(e)} className='w-[18rem] md:w-[25rem] lg:w-[32rem] h-[3rem] mt-1 rounded-e-full border-[4px] border-sky-200 bg-white text-center placeholder-sky-400' placeholder='Search word here ...'></input>
+        <input onChange={(e)=> changeHandler(e)} className='w-[70vw] md:w-[25rem] lg:w-[32rem] h-[3rem] mt-1 rounded-e-full border-[4px] border-sky-200 bg-white text-center placeholder-sky-400' placeholder='Search word here ...'></input>
       </div>
       {
         (serachRes.length>0)?(
-          <div className='w-[17rem] h-[10rem] md:w-[24rem] overflow-hidden z-40 lg:w-[31rem]'>
+          <div className='w-[65vw] h-[10rem] md:w-[24rem] overflow-hidden z-40 lg:w-[31rem]'>
             {serachRes.map((w : any)=>{
               return(
                 <Link key={w.english} href={`/mydictionary/${w.english[0]}`} >
