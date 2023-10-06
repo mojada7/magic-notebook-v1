@@ -30,7 +30,7 @@ function Addnew() {
 
   const eChangeHandler = (e : any)=>{
     let newD = inputData
-    newD.english = e.target.value
+    newD.english = e.target.value.toLowerCase()
     setinputData(newD)
   }
   const sChangeHandler = (e : any)=>{

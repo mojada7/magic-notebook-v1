@@ -8,9 +8,8 @@ function SearchWord({words}:any) {
 
 
   const changeHandler =(e:any)=> {
-    let searchedWord = e.target.value
+    let searchedWord = e.target.value.toLowerCase()
     
-    let swAr = searchedWord.split('')
 
     let pattern = new RegExp(`${searchedWord}.*`)
 
