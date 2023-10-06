@@ -111,7 +111,7 @@ const [wd3, setwd3] = useState([''])
         {
           main?(
             <>
-            <div className='text-3xl font-bold text-sky-500 w-[95vw] md:w-[24rem] mt-12 h-[12vh] md:h-[8rem] bg-white border-[5px] border-sky-400 rounded-xl text-center flex justify-center items-center'>
+            <div className='text-2xl font-bold text-sky-500 w-[95vw] md:w-[24rem] mt-12 h-[12vh] md:h-[8rem] bg-white border-[5px] border-sky-400 rounded-xl text-center flex justify-center items-center'>
             <div>
               {fw.english}
             </div>
@@ -126,7 +126,7 @@ const [wd3, setwd3] = useState([''])
               </>
             ):(
               <>
-                <div className={`${style.font} 'text-3xl text-pink-400 w-[95vw] md:w-[24rem] mt-1 h-[12vh] md:h-[8rem] bg-white border-[5px] border-pink-300 rounded-xl text-center flex justify-center items-center`}>
+                <div className={`${style.font} 'text-4xl font-extrabold text-pink-400 w-[95vw] md:w-[24rem] mt-1 h-[12vh] md:h-[8rem] bg-white border-[5px] border-pink-300 rounded-xl text-center flex justify-center items-center`}>
                   <div>
                   {
                     fw.meaning

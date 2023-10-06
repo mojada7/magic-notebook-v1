@@ -13,17 +13,17 @@ function inTurnArray() {
   wordsArray.map(w=>{
     if((w.level == 1)&& !w.ltt[0]) {
       inTurn.push(w) 
-    } else if((w.level == 1)&& timeTest(w.ltt,4)) {
+    } else if((w.level == 1)&& timeTest(w.ltt,24)) {
       inTurn.push(w) 
-    } else if((w.level == 2) && timeTest(w.ltt, 4)) {
+    } else if((w.level == 2) && timeTest(w.ltt, 24)) {
       inTurn.push(w) 
-    } else if((w.level == 3) && timeTest(w.ltt, 24)) {
+    } else if((w.level == 3) && timeTest(w.ltt, 48)) {
       inTurn.push(w) 
-    } else if((w.level == 4) && timeTest(w.ltt, 24)) {
+    } else if((w.level == 4) && timeTest(w.ltt, 48)) {
       inTurn.push(w) 
     } else if((w.level == 5) && timeTest(w.ltt, 72)) {
       inTurn.push(w) 
-    } else if((w.level == 6) && timeTest(w.ltt, 150)) {
+    } else if((w.level == 6) && timeTest(w.ltt, 144)) {
       inTurn.push(w) 
     } else if((w.level == 7) && timeTest(w.ltt, 300)) {
       inTurn.push(w) 
