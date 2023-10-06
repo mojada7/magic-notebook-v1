@@ -73,21 +73,24 @@ function Addnew() {
         meaning : inputData.secend,
         difficulty : dif
       })
-    }).then(res=>res.json()).then(res=>console.log(res)).catch(er=>console.log(er))
+    }).then(res=>res.json()).then(res=>{
+      console.log(res)
+      setcardMode(0)
+    }).catch(er=>console.log(er))
 
   }
 
 
   const eClickHandler = (e:any): void=> {
-    setcardMode(0)
+
     sendWord(1)
   }
   const mClickHandler = (e:any): void=> {
-    setcardMode(0)
+
     sendWord(2)
   }
   const hClickHandler = (e:any): void=> {
-    setcardMode(0)
+
     sendWord(3)
   }
 
