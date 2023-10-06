@@ -5,10 +5,10 @@ import mainpic2 from '../../../public/pics/mainpic2.png'
 import mainpic3 from '../../../public/pics/mainpic3.png'
 
 
-function Main({click}: any) {
+function Main() {
   
   return (
-    <div className='h-[85vh] lg:h-[80vh] flex flex-col lg:flex-row gap-4 justify-center pb-[5vh] items-center z-50'>
+    <div className='h-[85vh] pt-[25vh] lg:h-[80vh] flex flex-col lg:flex-row gap-4 justify-center pb-[5vh] items-center z-50'>
         <div className='z-50'>
           <MainItem pic={mainpic1} title={"Add new word"} hr={"addnew"} text={'The words you enter in your personal dictionary will be tested'}/>
         </div>     

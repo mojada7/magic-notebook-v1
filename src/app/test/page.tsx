@@ -1,8 +1,11 @@
+import Welcom from '@/components/welcome'
 import React from 'react'
 
 function test() {
   return (
-    <div>test</div>
+    <div>
+      <Welcom />
+    </div>
   )
 }
 

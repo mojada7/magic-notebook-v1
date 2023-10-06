@@ -1,0 +1,46 @@
+.h2 {
+    text-shadow:
+    -4px 0px 0px rgb(208, 251, 253),
+    4px 0px 0px rgb(208, 251, 253),
+    0px -4px 0px rgb(208, 251, 253),
+    0px 4px 0px rgb(208, 251, 253);
+    }
+.h3 {
+    text-shadow:
+    -2px 0px 0px rgb(208, 251, 253),
+    2px 0px 0px rgb(208, 251, 253),
+    0px -2px 0px rgb(208, 251, 253),
+    0px 2px 0px rgb(208, 251, 253);
+    }
+
+.m1 {
+    animation: welcomCloudMotion1 7s;
+}    
+.m11 {
+    animation: welcomCloudMotion11 3s;
+}    
+.m2 {
+    animation: welcomCloudMotion2 4s;
+}
+.m3 {
+    animation: fade 1s;
+}    
+
+
+
+@keyframes welcomCloudMotion1 {
+    0% { left: -50vw;}
+    100% {left: 300vw;}
+}
+@keyframes welcomCloudMotion11 {
+    0% { opacity: 100;}
+    100% {opacity : 0;}
+}
+@keyframes welcomCloudMotion2 {
+    0% { left: -110vw;}
+    100% {left: -250vw;}
+}
+@keyframes fade {
+    0% { opacity: 100;}
+    100% { opacity: 0;}
+}

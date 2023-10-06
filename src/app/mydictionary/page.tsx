@@ -4,6 +4,7 @@ import Back from '@/components/back'
 import DictionaryCard from '@/components/dictionaryCard'
 import SearchWord from '@/components/searchWord'
 import getWordsArray from '@/functions/getWordsArray'
+import saveData from '@/functions/saveData'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 
@@ -45,6 +46,8 @@ function Mydictionary() {
   }, [])
  
   const testC = ()=> {
+
+    saveData()
 
 
   }
