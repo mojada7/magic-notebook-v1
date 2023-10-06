@@ -8,7 +8,7 @@ export async function POST (req:Request) {
         const body = await req.json()
         console.log(body)
         await ctdb()
-        const newWord = new RU({...body})
+        const newWord = new RU({word : body.word, meaning : body.meaning, difficulty : +body.difficulty })
         await newWord.save().then(()=> console.log('saved')).catch(()=>console.log('cant save in db'))
     } catch {
 

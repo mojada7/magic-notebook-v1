@@ -78,6 +78,8 @@ function Addnew() {
       setcardMode(0)
     }).catch(er=>console.log(er))
 
+    saveData()
+
   }
 
 
@@ -126,7 +128,7 @@ function Addnew() {
         })
     }
     }).catch(er=>console.log(er))
-    saveData()
+
   }
   if(audioRef.current&&audioFlg==1){
     audioRef.current.play()
