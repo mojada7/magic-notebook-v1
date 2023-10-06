@@ -12,14 +12,14 @@ function Welcom() {
   const [email, setemail] = useState('')
 
   let addUser = (name : string) : void => {
-    localStorage.setItem('magic_notebook', JSON.stringify({name: name, email: email, data : {
+    localStorage.setItem('magic_notebook', JSON.stringify({name: name.toLowerCase(), email: email.toLowerCase(), data : {
       words: {
       }
     }}))
     setmode(1)
   }
   let addUser1 = (name : string, data : any) : void => {
-    localStorage.setItem('magic_notebook', JSON.stringify({name: name, email, data : data}))
+    localStorage.setItem('magic_notebook', JSON.stringify({name: name.toLowerCase(), email : email.toLowerCase(), data : data}))
     setmode(1)
   }
 
