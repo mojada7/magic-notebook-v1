@@ -3,12 +3,13 @@ const  saveData = () : void=> {
     dataxx = localStorage.getItem('magic_notebook')
     let datax = JSON.parse(dataxx)
 
+
     fetch('/api/user/words', {
         method : "POST",
         headers : {
             "Content-Type" : "application/json"
-        },
-        body : JSON.stringify({email : datax.name, data : datax.data})
+          },
+        body : JSON.stringify({email : datax.email, data : datax})
     })
     
 }

@@ -6,10 +6,11 @@ import React, { useEffect, useState } from 'react'
 import pic from '../../../../public/pics/mainpic3.png'
 import Timer from '@/components/timet'
 import { useParams } from 'next/navigation'
-import getWordsArray from '@/functions/getWordsArray'
+import style from '../style.module.css'
 import getUserLS from '@/functions/getUserLS'
 import addWord from '@/functions/addWord'
 import editWord from '@/functions/editWord2'
+import saveData from '@/functions/saveData'
 
 
 function Level() {
@@ -58,6 +59,7 @@ function Level() {
       })
       editWord(fw.english, 5)
       endTest(fw.english)
+      saveData()
       if(tw.length==1){
         setmain(0)
       }
@@ -68,6 +70,7 @@ function Level() {
           secend : fw.meaning
         })
       endTest(fw.english)
+      saveData()
       if(tw.length==1){
         setmain(0)
       }
@@ -126,7 +129,7 @@ function Level() {
               </>
             ):(
               <>
-                <div className='text-2xl font-bold text-pink-400 w-[95vw] md:w-[24rem] mt-1 h-[12vh] md:h-[6rem] bg-white border-[5px] border-sky-200 rounded-xl text-center flex justify-center items-center'>
+                <div className={`${style.font} text-2xl text-pink-400 w-[95vw] md:w-[24rem] mt-1 h-[12vh] md:h-[6rem] bg-white border-[5px] border-sky-200 rounded-xl text-center flex justify-center items-center`}>
                   <div>
                   {
                     fw.meaning

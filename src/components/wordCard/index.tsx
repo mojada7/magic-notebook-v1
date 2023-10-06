@@ -5,6 +5,7 @@ import FalseC from '../falseC'
 import editWord from '@/functions/editWord'
 import Image from 'next/image'
 import audio from '../../../public/pics/audio.png'
+import style from './style.module.css'
 function WordCard({wrd, mean, his, lev} : {
     wrd : string,
     mean : string,
@@ -116,10 +117,10 @@ function WordCard({wrd, mean, his, lev} : {
     <div className={`flex ${lev<8?'bg-white':'bg-green-100'} rounded-lg md:px-4 py-2 md:py-4 border-[4px] border-sky-200`}>
         <div className='flex w-[80vw] flex-col md:flex-row'>
             <div className='flex'>
-                <div className='w-[8rem] md:w-[16rem] ps-2 tetx-lg md:text-lg font-semibold text-pink-500'>
+                <div className='w-[8rem] md:w-[16rem] ps-2 tetx-md md:text-lg font-semibold text-pink-500'>
                     {wrd}
                 </div>
-                <div className='w-[6rem] md:w-[16rem] ps-2 tetx-lg md:text-lg font-semibold text-sky-500'>
+                <div className={`${style.font} w-[6rem] md:w-[16rem] ps-2 tetx-md md:text-lg  text-sky-500`}>
                     {mean} 
                 </div>           
             </div>

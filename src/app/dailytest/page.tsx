@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 
 import pic from '../../../public/pics/mainpic3.png'
 import Timer from '@/components/timet'
-import injection from '@/functions/injection'
+import style from './style.module.css'
 import inTurnArray from '@/functions/inTurnArray'
 import testResault from '@/functions/testResault'
 import Link from 'next/link'
@@ -126,7 +126,7 @@ const [wd3, setwd3] = useState([''])
               </>
             ):(
               <>
-                <div className='text-3xl font-bold text-pink-400 w-[95vw] md:w-[24rem] mt-1 h-[12vh] md:h-[8rem] bg-white border-[5px] border-pink-300 rounded-xl text-center flex justify-center items-center'>
+                <div className={`${style.font} 'text-3xl text-pink-400 w-[95vw] md:w-[24rem] mt-1 h-[12vh] md:h-[8rem] bg-white border-[5px] border-pink-300 rounded-xl text-center flex justify-center items-center`}>
                   <div>
                   {
                     fw.meaning
@@ -137,7 +137,7 @@ const [wd3, setwd3] = useState([''])
                 <div className='flex flex-col lg:flex-row justify-center gap-3 mt-12'>
                   <button onClick={(e)=> ikClickHnadler(e)} className='w-[60vw] md:w-[20rem] hover:scale-105 text-xl font-bold text-white rounded-full border-[4px] border-sky-200 bg-green-400 h-[7vh] md:h-[4rem]'>I knew</button>
                   <button onClick={(e)=> dClickHnadler(e)} className='w-[60vw] md:w-[20rem] hover:scale-105 text-xl font-bold text-white rounded-full border-[4px] border-sky-200 bg-yellow-400 h-[7vh] md:h-[4rem]'>knew with doubt</button>
-                  <button onClick={(e)=> dkClickHnadler(e)} className='w-[60vw] md:w-[20rem] hover:scale-105 text-xl font-bold text-white rounded-full border-[4px] border-sky-200 bg-rose-400 h-[7vh] md:h-[4rem]'>I did not know</button>
+                  <button onClick={(e)=> dkClickHnadler(e)} className='w-[60vw] md:w-[20rem] hover:scale-105 text-xl font-bold text-white rounded-full border-[4px] border-sky-200 bg-pink-400 h-[7vh] md:h-[4rem]'>I did not know</button>
                 </div>
 
               </>
@@ -150,26 +150,26 @@ const [wd3, setwd3] = useState([''])
             </>
 
           ):(
-            <div className='w-full h-[20rem] bg-sky-300 flex flex-col justify-center items-center mt-16'>
-              <div className='text-white text-lg w-[80vw] text-center'>
-                <span className='pe-2 text-2xl'>
+            <div className='w-full h-[20rem] flex flex-col justify-center items-center mt-20'>
+              <div className='text-sky-500 text-lg w-[80vw] text-center font-bold'>
+                <span className='pe-2 text-2xl text-pink-400'>
                 No words enough! 
-                </span>
+                </span >
                 you can expand your vocablurary by select your decent catagory : 
               </div>
-              <div className='mt-8'>
+              <div className='mt-8 text-sky-600'>
                 <Link href={'/dailytest/1'} >
                   <div className='w-[18rem] border-[4px] border-sky-200 h-[3rem] rounded-xl text-center py-2 mt-4 text-white hover:bg-sky-300 bg-sky-400 font-bold'>Easy</div>
                 </Link>
-                <div className='h-[8px] text-sm ps-2 text-white pt-[2px]'>words like : {wd1[0]}, {wd1[1]}, {wd1[2]}</div>
+                <div className='h-[8px] text-sm ps-2 pt-[2px]'>words like : {wd1[0]}, {wd1[1]}, {wd1[2]}</div>
                 <Link href={'/dailytest/2'} >
                   <div className='w-[18rem] border-[4px] border-sky-200 h-[3rem] rounded-xl text-center py-2 mt-4 text-white hover:bg-yellow-200 bg-yellow-300 font-bold'>Medium</div>
                 </Link>
-                  <div className='h-[8px] text-sm ps-2 text-white pt-[2px]'>words like : {wd2[0]}, {wd2[1]}, {wd2[2]}</div>
+                  <div className='h-[8px] text-sm ps-2 pt-[2px]'>words like : {wd2[0]}, {wd2[1]}, {wd2[2]}</div>
                 <Link href={'/dailytest/3'} >
                   <div className='w-[18rem] border-[4px] border-sky-200 h-[3rem] rounded-xl text-center py-2 mt-4 text-white hover:bg-pink-300 bg-pink-400 font-bold'>advanced</div>
                 </Link>
-                <div className='h-[8px] text-sm ps-2 text-white pt-[2px]'>words like : {wd3[0]}, {wd3[1]}, {wd3[2]}</div>
+                <div className='h-[8px] text-sm ps-2 pt-[2px]'>words like : {wd3[0]}, {wd3[1]}, {wd3[2]}</div>
               </div>
             </div>
           )

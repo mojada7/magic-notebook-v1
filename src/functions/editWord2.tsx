@@ -10,7 +10,7 @@ function editWord(englishx : string, level : number) : void {
     let lev = data.data.words[englishx.toLowerCase()].level
     delete data.data.words[englishx.toLowerCase()]
 
-    data.data.words[englishx.toLowerCase()] = {meaning : meanin, level : level, test : his, ltt : ttlx}
+    data.data.words[englishx.toLowerCase()] = {meaning : meanin, level : lev, test : his, ltt : ttlx}
 
     localStorage.setItem('magic_notebook', JSON.stringify(data))
     

@@ -7,10 +7,9 @@ export async function POST(req:Request) {
         const body = await req.json()
         console.log(body)
         await ctdb()
-        const user = await UU.find({name: body.email})
+        const user = await UU.findOneAndUpdate({email: body.email}, {data : body.data})
         console.log(user)
-
     } catch {
-
+        console.log('error')
     }
 }

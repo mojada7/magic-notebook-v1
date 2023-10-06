@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import alarm from '../../../public/pics/alarm.png'
+import style from './style.module.css'
 
 function Timer({set} : any) {
 
@@ -19,7 +20,7 @@ function Timer({set} : any) {
         }, 10);
     })
   return (
-    <div className={`h-[4rem] flex rounded-2xl mt-8 items-center gap-8 text-white`}>
+    <div className={`h-[4rem] flex rounded-2xl font-bold mt-8 items-center ${style.h3} gap-8 text-white`}>
         <div className='animate-bounce duration-1000'>
         <Image src={alarm} alt='' width={50} /> 
         </div>
