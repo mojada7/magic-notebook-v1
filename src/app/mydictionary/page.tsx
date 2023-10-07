@@ -56,17 +56,17 @@ function Mydictionary() {
       let nr = [data[data.length-1].word, data[data.length-2].word, data[data.length-3].word]
       setwd1(nr)
     }
-      ).catch(er=>console.log(er))
+      ).catch(er=>console.log('er1'))
     fetch(`/api/2`).then(res=>res.json()).then(res=>{
       const data = res.data
       let nr = [data[data.length-1].word, data[data.length-2].word, data[data.length-3].word]
       setwd2(nr)
-    }).catch(er=>console.log(er))
+    }).catch(er=>console.log('er2'))
     fetch(`/api/3`).then(res=>res.json()).then(res=>{
       const data = res.data
       let nr = [data[data.length-1].word, data[data.length-2].word, data[data.length-3].word]
       setwd3(nr)
-    }).catch(er=>console.log(er))
+    }).catch(er=>console.log('er3'))
 
 
 
@@ -122,25 +122,22 @@ function Mydictionary() {
                 (st==2)&&(
                   <div className='fixed w-[100vw] h-[80vh] top-[20vh] left-0 '>
                     <div className='w-full h-[20rem] bg-transparent flex flex-col justify-center items-center mt-[20vh]'>
-                      <div className='text-sky-500 text-lg w-[80vw] text-center font-bold'>
-                        <span className='pe-2 text-2xl text-pink-400'>
-                        No words enough! 
-                        </span>
+                      <div className='text-sky-500 text-2xl w-[80vw] text-center font-extrabold'>
                         you can expand your vocablurary by select your decent catagory : 
                       </div>
                       <div className='mt-8'>
                         <Link href={'/dailytest/1'} >
                           <div className='w-[18rem] border-[4px] border-sky-200 h-[3rem] rounded-xl text-center py-2 mt-4 text-white hover:bg-sky-300 bg-sky-400 font-bold'>Easy</div>
                         </Link>
-                        <div className='h-[8px] text-sm ps-2 text-sky-600 pt-[2px]'>words like : {wd1[0]}, {wd1[1]}, {wd1[2]}</div>
+                        <div className='h-[8px] text-sm ps-2 text-white font-bold pt-[2px]'>words like : {wd1[0]}, {wd1[1]}, {wd1[2]}</div>
                         <Link href={'/dailytest/2'} >
                           <div className='w-[18rem] border-[4px] border-sky-200 h-[3rem] rounded-xl text-center py-2 mt-4 text-white hover:bg-yellow-200 bg-yellow-300 font-bold'>Medium</div>
                         </Link>
-                          <div className='h-[8px] text-sm ps-2 text-sky-600 pt-[2px]'>words like : {wd2[0]}, {wd2[1]}, {wd2[2]}</div>
+                          <div className='h-[8px] text-sm ps-2 text-white font-bold pt-[2px]'>words like : {wd2[0]}, {wd2[1]}, {wd2[2]}</div>
                         <Link href={'/dailytest/3'} >
                           <div className='w-[18rem] border-[4px] border-sky-200 h-[3rem] rounded-xl text-center py-2 mt-4 text-white hover:bg-pink-300 bg-pink-400 font-bold'>advanced</div>
                         </Link>
-                        <div className='h-[8px] text-sm ps-2 text-sky-600 pt-[2px]'>words like : {wd3[0]}, {wd3[1]}, {wd3[2]}</div>
+                        <div className='h-[8px] text-sm ps-2 text-white font-bold pt-[2px]'>words like : {wd3[0]}, {wd3[1]}, {wd3[2]}</div>
                       </div>
                     </div>
                   </div>

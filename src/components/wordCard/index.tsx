@@ -108,7 +108,7 @@ function WordCard({wrd, mean, his, lev} : {
   
         }).catch(er=>console.log(er))
 
-    }, [])
+    }, [wrd])
 
 
 

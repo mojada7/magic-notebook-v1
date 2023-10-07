@@ -8,8 +8,10 @@ import getUserLS from '@/functions/getUserLS'
 
 function Welcom() {
   const [mode, setmode] = useState(1)
+  const [mode1, setmode1] = useState(0)
   const [name, setname] = useState('')
   const [email, setemail] = useState('')
+  const [fielder, setfielder] = useState(0)
 
   let addUser = (name : string) : void => {
     localStorage.setItem('magic_notebook', JSON.stringify({name: name.toLowerCase(), email: email.toLowerCase(), data : {
@@ -26,13 +28,15 @@ function Welcom() {
 
   const nameInputChangeHandler = (e : any)=> {
     setname(e.target.value)
+    e.target.value.length>2&&setfielder(0)
   }
   const emailInputChangeHandler = (e : any)=> {
     setemail(e.target.value)
+    e.target.value.length>10&&setfielder(0)
   }
   const enterClickHandler = ()=> {
     if(name.length > 2 && email.length > 10) {
-
+      setmode1(1)
       fetch('/api/user', {
         method : "POST",
         headers : {
@@ -60,7 +64,9 @@ function Welcom() {
       }).catch(er=>{
         addUser(name)
         console.log(er)})
-    } 
+    } else {
+      setfielder(1)
+    }
   }
 
 
@@ -102,6 +108,7 @@ function Welcom() {
         </div>
         <div className={` ${mode?'hidden':''} absolute top-[50vh] lg:top-[50vh] left-[15vw] lg:left-[5vw] w-[70vw] lg:w-[40vw] h-[15vh] lg:h-[40vh] z-50`}>
           <div className='w-full h-full flex gap-3 flex-col justify-center items-center'>
+            <div className='text-lg text-pink-400'>{fielder?'nickname and email must be filled':''}</div>
             <input onChange={(e)=>{nameInputChangeHandler(e)}} className='w-full h-[4rem] rounded-xl font-bold border-[6px] placeholder-pink-400 text-pink-400 text-center text-xl border-pink-200 bg-white hover:scale-105' placeholder='Pick a nickname ...'></input>
             <input onChange={(e)=>{emailInputChangeHandler(e)}} className='w-full h-[4rem] rounded-xl font-bold border-[6px] placeholder-sky-400 text-sky-400 text-center text-xl border-sky-200 bg-white hover:scale-105' placeholder='enter an email address'></input>
 
@@ -109,7 +116,7 @@ function Welcom() {
 
           </div>
         </div>
-        <div onClick={enterClickHandler} className={`${style.h2}  ${mode?'hidden':''} absolute top-[80vh] lg:top-[60vh] left-[15vw] lg:left-[70vw] text-4xl lg:text-5xl font-extrabold hover:scale-90 hover:cursor-pointer text-sky-400 z-50`}>
+        <div onClick={enterClickHandler} className={`${style.h2}  ${mode1?'hidden':''} absolute top-[80vh] lg:top-[60vh] left-[15vw] lg:left-[70vw] text-4xl lg:text-5xl font-extrabold hover:scale-90 hover:cursor-pointer text-sky-400 z-50`}>
           Start Journey ...
         </div>
     </>
