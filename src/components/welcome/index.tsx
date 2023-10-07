@@ -108,7 +108,7 @@ function Welcom() {
         </div>
         <div className={` ${mode?'hidden':''} absolute top-[50vh] lg:top-[50vh] left-[15vw] lg:left-[5vw] w-[70vw] lg:w-[40vw] h-[15vh] lg:h-[40vh] z-50`}>
           <div className='w-full h-full flex gap-3 flex-col justify-center items-center'>
-            <div className='text-lg text-pink-400'>{fielder?'nickname and email must be filled':''}</div>
+            <div className='text-md lg:text-lg text-pink-400'>{fielder?'nickname and email must be filled':''}</div>
             <input onChange={(e)=>{nameInputChangeHandler(e)}} className='w-full h-[4rem] rounded-xl font-bold border-[6px] placeholder-pink-400 text-pink-400 text-center text-xl border-pink-200 bg-white hover:scale-105' placeholder='Pick a nickname ...'></input>
             <input onChange={(e)=>{emailInputChangeHandler(e)}} className='w-full h-[4rem] rounded-xl font-bold border-[6px] placeholder-sky-400 text-sky-400 text-center text-xl border-sky-200 bg-white hover:scale-105' placeholder='enter an email address'></input>
 

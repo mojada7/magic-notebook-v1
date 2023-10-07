@@ -122,7 +122,7 @@ function Mydictionary() {
                 (st==2)&&(
                   <div className='fixed w-[100vw] h-[80vh] top-[20vh] left-0 '>
                     <div className='w-full h-[20rem] bg-transparent flex flex-col justify-center items-center mt-[20vh]'>
-                      <div className='text-sky-500 text-2xl w-[80vw] text-center font-extrabold'>
+                      <div className='text-sky-500 text-xl lg:text-2xl w-[80vw] text-center font-extrabold'>
                         you can expand your vocablurary by select your decent catagory : 
                       </div>
                       <div className='mt-8'>
