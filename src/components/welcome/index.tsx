@@ -8,7 +8,7 @@ import getUserLS from '@/functions/getUserLS'
 
 function Welcom() {
   const [mode, setmode] = useState(1)
-  const [mode1, setmode1] = useState(0)
+  const [mode1, setmode1] = useState(1)
   const [name, setname] = useState('')
   const [email, setemail] = useState('')
   const [fielder, setfielder] = useState(0)
@@ -19,10 +19,12 @@ function Welcom() {
       }
     }}))
     setmode(1)
+    setmode1(1)
   }
   let addUser1 = (name : string, data : any) : void => {
     localStorage.setItem('magic_notebook', JSON.stringify({name: name.toLowerCase(), email : email.toLowerCase(), data : data}))
     setmode(1)
+    setmode1(1)
   }
 
 
@@ -36,7 +38,7 @@ function Welcom() {
   }
   const enterClickHandler = ()=> {
     if(name.length > 2 && email.length > 10) {
-      setmode1(1)
+
       fetch('/api/user', {
         method : "POST",
         headers : {
