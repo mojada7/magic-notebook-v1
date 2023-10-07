@@ -6,6 +6,7 @@ import editWord from '@/functions/editWord'
 import Image from 'next/image'
 import audio from '../../../public/pics/audio.png'
 import style from './style.module.css'
+import AudioBtn from '../audioBtn'
 function WordCard({wrd, mean, his, lev} : {
     wrd : string,
     mean : string,
@@ -154,16 +155,7 @@ function WordCard({wrd, mean, his, lev} : {
         
         <div className='flex justify-end w-[15vw] lg:w-[10vw]'>
             <div>
-            {
-                (audioURL.length>0)&&(
-                    <>
-                        <audio ref={audioRef} src={audioURL} />
-                        <button onClick={(e)=> audioHandler(e)} className='w-[2rem] flex justify-center me-8' >
-                            <Image src={audio} alt='' width={30} />
-                        </button>
-                    </>
-                )
-            }
+            <AudioBtn audioRef={audioRef} audioHandler={audioHandler} audioURL={audioURL} />
 
             </div>
             <div>

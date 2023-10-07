@@ -82,7 +82,7 @@ function Welcom() {
         <div className={`${mode&&style.m1} ${mode?'left-[300vw]':'-left-[50vw] lg:left-[15vw]'} hover:scale-105 absolute -top-[48vh] lg:-top-[150vh] h-[170vh] lg:h-[350vh] w-[350vw] lg:w-[150vw] z-50`}>
           <Image src={cloud2} alt='' fill />
         </div>
-        <div className={`${mode&&style.m2} ${mode?'-left-[250vw] lg:-left-[380vw]':'-left-[110vw] lg:-left-[40vw]'} hover:scale-105 absolute top-[10vh] lg:-top-[5vh] h-[110vh] lg:h-[150vh] w-[250vw] lg:w-[121vw] -left-[110vw] lg:-left-[40vw] z-50`}>
+        <div className={`${mode&&style.m2} ${mode?'-left-[250vw] lg:-left-[380vw]':'-left-[110vw] lg:-left-[40vw]'} hover:scale-105 absolute top-[10vh] lg:-top-[5vh] h-[110vh] lg:h-[150vh] w-[250vw] lg:w-[121vw] -left-[110vw] z-50`}>
          <Image src={cloud} alt='' fill />
         </div>
         <div className={`${mode?'hidden':''} absolute top-[20vh] lg:top-[15vh] right-[10vw] lg:right-[15vw] w-[80vw] lg:w-[40vw] h-[15vh] lg:h-[30vh z-50`}>

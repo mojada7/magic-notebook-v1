@@ -1,7 +1,7 @@
 'use client'
 import Back from '@/components/back'
 import Image from 'next/image'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import pic from '../../../public/pics/mainpic3.png'
 import Timer from '@/components/timet'
@@ -9,6 +9,8 @@ import style from './style.module.css'
 import inTurnArray from '@/functions/inTurnArray'
 import testResault from '@/functions/testResault'
 import Link from 'next/link'
+import AudioBtn from '@/components/audioBtn'
+import getAudio from '@/functions/getAudio'
 
 function DailyTest() {
 
@@ -65,6 +67,16 @@ const [wd3, setwd3] = useState([''])
 
   }
 
+
+  ///audio
+  const [audioURL, setaudioURL] = useState('')
+  getAudio(fw.english, setaudioURL)
+  const audioRef : any = useRef(null)
+  const audiHandler = (e:any) =>{
+    audioRef.current?.play()
+ }
+  ////
+
   function endTest(word:string){
     let wordAr = [...tw]
     let newAr = wordAr.filter(w=>{
@@ -111,7 +123,7 @@ const [wd3, setwd3] = useState([''])
         {
           main?(
             <>
-            <div className='text-2xl font-bold text-sky-500 w-[95vw] md:w-[24rem] mt-12 h-[12vh] md:h-[8rem] bg-white border-[5px] border-sky-400 rounded-xl text-center flex justify-center items-center'>
+            <div className='text-2xl font-bold text-sky-500 w-[95vw] md:w-[24rem] mt-12 h-[12vh] bg-white border-[5px] border-sky-400 rounded-xl text-center flex justify-center items-center'>
             <div>
               {fw.english}
             </div>
@@ -126,12 +138,16 @@ const [wd3, setwd3] = useState([''])
               </>
             ):(
               <>
-                <div className={`${style.font} 'text-4xl font-extrabold text-pink-400 w-[95vw] md:w-[24rem] mt-1 h-[12vh] md:h-[8rem] bg-white border-[5px] border-pink-300 rounded-xl text-center flex justify-center items-center`}>
-                  <div>
+                <div className={`${style.font} 'text-4xl font-extrabold text-pink-400 w-[95vw] md:w-[24rem] mt-1 h-[12vh] bg-white border-[5px] border-pink-300 rounded-xl text-center flex justify-center items-center`}>
+                  <div className='w-[85%]'>
                   {
                     fw.meaning
                   }
                   </div>
+                  <div className='w-[15%]'>
+                  <AudioBtn audioRef={audioRef} audioURL={audioURL} audioHandler={audiHandler} />
+                  </div>
+
 
                 </div>
                 <div className='flex flex-col lg:flex-row justify-center gap-3 mt-12'>

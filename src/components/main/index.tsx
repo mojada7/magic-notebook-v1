@@ -16,7 +16,7 @@ function Main() {
           <MainItem pic={mainpic3} title={"Daily magic test"} hr={"dailytest"} text={'If you complete magic-test stages, we guarantee that you will remember your dictionary for a long time.'}/>
         </div>  
         <div className='z-50'>
-          <MainItem pic={mainpic2} title={"my Dictionary"} hr={"mydictionary"} text={'You can check and eddite your entered words and also expand your vocabulary'}/>      
+          <MainItem pic={mainpic2} title={"my Dictionary"} hr={"mydictionary"} text={'You can check and edite your entered words and also expand your vocabulary'}/>      
       </div>
     </div>
   )

@@ -45,23 +45,12 @@ function Addnew() {
   }
   const yesClickHandler = (): void=> {
     addWordx()
-    fetch('/api', {
-      method : "POST",
-      headers : {
-        "Content-Type" : "application/json",
-      },
-      body : JSON.stringify({
-        word : inputData.english,
-        meaning : inputData.secend,
-        difficulty : 1
-      })
-    })
   }
   const editeClickHandler = (): void=> {
     setcardMode(0)
   }
 
-  const sendWord = (dif:Number) => {
+  const sendWord = (dif:number) => {
 
     fetch('/api', {
       method : "POST",
