@@ -77,6 +77,8 @@ function Welcom() {
       null
     } else {
       setmode(0)
+      setmode1(0)
+
     }
 
   },[])
