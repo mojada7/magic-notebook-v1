@@ -14,7 +14,9 @@ function getAudio(wrd:string, setaudioURL: any) {
                 
             })
             resx.length==0&&setaudioURL('')
-        } 
+        }  else {
+            setaudioURL('')
+        }
 
     }).catch(er=>console.log(er))
   }

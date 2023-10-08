@@ -3,8 +3,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import TrueC from '../trueC'
 import FalseC from '../falseC'
 import editWord from '@/functions/editWord'
-import Image from 'next/image'
-import audio from '../../../public/pics/audio.png'
 import style from './style.module.css'
 import AudioBtn from '../audioBtn'
 function WordCard({wrd, mean, his, lev} : {
@@ -20,9 +18,6 @@ function WordCard({wrd, mean, his, lev} : {
     })
     const [stat , setstat] = useState(0)
 
-    const [audioURL, setaudioURL] = useState('')
-
-    const audioRef : any = useRef(null)
 
     const editeHandler = (e : any)=> {
         setinputs({
@@ -63,15 +58,6 @@ function WordCard({wrd, mean, his, lev} : {
             m : e.target.value
         })
     }
-    const audioHandler = (e:any)=> {
-
-
-        if(audioRef.current) {
-            audioRef.current.play()
-        } else {
-            
-        }
-    }
 
 
     const addEditeLayer = (e : string, m : string)=> {{
@@ -89,27 +75,6 @@ function WordCard({wrd, mean, his, lev} : {
         </div>
         )
     }}
-
-    useEffect(()=> {
-
-        fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${wrd}`).then(res=>res.json()).then(res=> {
-            
-        console.log(res)
-        if(res[0].phonetics.length>0) {
-                res[0].phonetics.map((x:any)=>{
-                    if(x.audio.length>0){
-                        setaudioURL(x.audio)
-                    }
-
-
-                    
-                })
-            }
-  
-        }).catch(er=>console.log(er))
-
-    }, [wrd])
-
 
 
 
@@ -155,7 +120,7 @@ function WordCard({wrd, mean, his, lev} : {
         
         <div className='flex justify-end w-[15vw] lg:w-[10vw]'>
             <div>
-            <AudioBtn audioRef={audioRef} audioHandler={audioHandler} audioURL={audioURL} />
+            <AudioBtn word={{english : wrd}} />
 
             </div>
             <div>

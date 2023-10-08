@@ -1,24 +1,26 @@
 'use client'
 import Back from '@/components/back'
 import Image from 'next/image'
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import add from '../../../public/pics/mainpic1.png'
 import addWord from '@/functions/addWord'
 import magic from '../../../public/pics/magic-wand.png'
 import sound from '../../../public/pics/audio.png'
 import saveData from '@/functions/saveData'
 import style from './style.module.css'
+import ANAudioBtn from '@/components/addNewAudioBtn'
 function Addnew() {
   const eref : any = useRef(null)
   const[ audioFlg, setaudioFlg ]= useState(0)
   const sref : any = useRef(null)
   const [inputData, setinputData] = useState({
-    english : '',
+    english : '0',
     secend : ''
   })
   const [cardMode, setcardMode] = useState(0)
   const audioRef : any = useRef(null)
   const [audioURL, setaudioURL] = useState('')
+  const [audioclicked, setaudioclicked] = useState(0)
   const addWordx = () : void => {
     if(addWord(inputData)) {
       setcardMode(3)
@@ -45,6 +47,8 @@ function Addnew() {
   }
   const yesClickHandler = (): void=> {
     addWordx()
+
+    
   }
   const editeClickHandler = (): void=> {
     setcardMode(0)
@@ -105,6 +109,7 @@ function Addnew() {
 
 
   const soundClickHandler = (e:any) => {
+    setaudioclicked(1)
     fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${inputData.english}`)
     .then(res=>res.json()).then(res=>{
       console.log(res)
@@ -113,16 +118,26 @@ function Addnew() {
             if(x.audio.length>0){
                 setaudioURL(x.audio)
                 setaudioFlg(1)
+
+
             }
         })
     }
     }).catch(er=>console.log(er))
 
   }
-  if(audioRef.current&&audioFlg==1){
-    audioRef.current.play()
-    setaudioFlg(0)
-  }
+
+
+
+    if(audioRef.current&&audioFlg==1){
+      audioRef.current.play()
+      setaudioFlg(0)
+      setaudioclicked(0)
+    }
+
+
+
+
   return (
     <>
       <Back title={'Home'} hr={'/'} />
@@ -133,10 +148,12 @@ function Addnew() {
           <Image src={add} alt='' width={100} />
           <div className='flex mt-8 rounded-xl border-[6px] border-sky-400'>
             <input ref={eref} onChange={(e)=> eChangeHandler(e)} className='w-[80vw] lg:w-[24rem] h-[5rem] text-center rounded-s-md placeholder-sky-300 text-xl text-sky-400  border-sky-200 font-bold' placeholder='Type new English word here ...' />
-            <audio ref={audioRef} src={audioURL} />
-            <button onClick={(e)=>soundClickHandler(e)} className='w-[4rem] ps-3 text-md text-white hover:bg-sky-300 h-[5rem] rounded-md border-[6px] bg-sky-200 rounded-s-none border-s-0 border-sky-200'>
-              <Image src={sound} width={40} alt='sound' />
-            </button>
+            
+          
+            <ANAudioBtn word={inputData} />
+         
+            
+
           </div>
          
           <div className='flex rounded-xl border-[6px] mt-4 border-pink-300'>

@@ -1,9 +1,23 @@
 import Image from 'next/image'
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import audio from '../../../public/pics/audio.png'
+import getAudio from '@/functions/getAudio'
 
-function AudioBtn({audioRef, audioURL, audioHandler} : any) {
+function AudioBtn({word} : any) {
+
+    const [audioURL, setaudioURL] = useState('')
+    getAudio(word.english, setaudioURL)
+    const audioRef : any = useRef(null)
+    const audioHandler = (e:any) =>{
+      audioRef.current?.play()
+   }
+
+
+
+    
   return (
+
+    
     <>
     {
         (audioURL.length>0)?(

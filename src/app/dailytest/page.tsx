@@ -145,7 +145,7 @@ const [wd3, setwd3] = useState([''])
                   }
                   </div>
                   <div className='w-[15%]'>
-                  <AudioBtn audioRef={audioRef} audioURL={audioURL} audioHandler={audiHandler} />
+                  <AudioBtn word={fw} />
                   </div>
 
 
