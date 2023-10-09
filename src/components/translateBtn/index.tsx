@@ -41,8 +41,8 @@ function TranslaterBtn({sref, inputData, setinputData} : any) {
               ):(
 
                 <>
-                  <button className='animate-spin w-[4rem] ps-3 text-md text-whit h-[5rem] rounded-md'>
-                    <Image src={loadingpic} width={40} alt='magic translate' />
+                  <button className='w-[4rem] ps-3 text-md text-whit h-[5rem] rounded-md'>
+                    <Image className='animate-spin ' src={loadingpic} width={40} alt='magic translate' />
                   </button>
 
                 </>

@@ -52,8 +52,8 @@ function ANAudioBtn({word}:any) {
 
             {audioclicked==1&&(
               <>
-              <button className={`animate-spin w-[4rem] ps-3 text-md text-white h-[5rem] rounded-md rounded-s-none`}>
-              <Image src={loadingpic} width={40} alt='sound' />
+              <button className={`w-[4rem] ps-3 text-md text-white h-[5rem] rounded-md rounded-s-none`}>
+              <Image className='animate-spin ' src={loadingpic} width={40} alt='sound' />
             </button>
               </>
             )}
