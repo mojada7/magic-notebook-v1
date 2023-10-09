@@ -1,26 +1,21 @@
 'use client'
 import Back from '@/components/back'
 import Image from 'next/image'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import add from '../../../public/pics/mainpic1.png'
 import addWord from '@/functions/addWord'
-import magic from '../../../public/pics/magic-wand.png'
-import sound from '../../../public/pics/audio.png'
 import saveData from '@/functions/saveData'
 import style from './style.module.css'
 import ANAudioBtn from '@/components/addNewAudioBtn'
+import TranslaterBtn from '@/components/translateBtn'
 function Addnew() {
   const eref : any = useRef(null)
-  const[ audioFlg, setaudioFlg ]= useState(0)
   const sref : any = useRef(null)
   const [inputData, setinputData] = useState({
     english : '0',
     secend : ''
   })
   const [cardMode, setcardMode] = useState(0)
-  const audioRef : any = useRef(null)
-  const [audioURL, setaudioURL] = useState('')
-  const [audioclicked, setaudioclicked] = useState(0)
   const addWordx = () : void => {
     if(addWord(inputData)) {
       setcardMode(3)
@@ -90,50 +85,15 @@ function Addnew() {
   }
 
 
-  const translateClickHandler = (e:any) => {
-    fetch(`https://one-api.ir/translate/?token=818351:651929dfbabb8&action=google&lang=fa&q=${inputData.english}`)
-    .then(res=>res.json()).then(res=>{
-      if(res.status==200) {
-        setinputData({
-          english : inputData.english,
-          secend : res.result
-        })
-        sref.current.value = res.result
-
-      }
-    }).catch(er=>console.log(er))
-  }
 
 
 
 
 
-  const soundClickHandler = (e:any) => {
-    setaudioclicked(1)
-    fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${inputData.english}`)
-    .then(res=>res.json()).then(res=>{
-      console.log(res)
-      if(res[0].phonetics.length>0) {
-        res[0].phonetics.map((x: { audio: any})=>{
-            if(x.audio.length>0){
-                setaudioURL(x.audio)
-                setaudioFlg(1)
-
-
-            }
-        })
-    }
-    }).catch(er=>console.log(er))
-
-  }
 
 
 
-    if(audioRef.current&&audioFlg==1){
-      audioRef.current.play()
-      setaudioFlg(0)
-      setaudioclicked(0)
-    }
+
 
 
 
@@ -146,7 +106,7 @@ function Addnew() {
         cardMode==0&&(
           <div className='z-20 flex flex-col items-center justify-center pt-[6vh]'>
           <Image src={add} alt='' width={100} />
-          <div className='flex mt-8 rounded-xl border-[6px] border-sky-400'>
+          <div className='flex mt-8 rounded-xl border-[6px] bg-sky-200 border-sky-400'>
             <input ref={eref} onChange={(e)=> eChangeHandler(e)} className='w-[80vw] lg:w-[24rem] h-[5rem] text-center rounded-s-md placeholder-sky-300 text-xl text-sky-400  border-sky-200 font-bold' placeholder='Type new English word here ...' />
             
           
@@ -158,9 +118,7 @@ function Addnew() {
          
           <div className='flex rounded-xl border-[6px] mt-4 border-pink-300'>
             <input ref={sref} onChange={(e)=> sChangeHandler(e)} className={`${style.font} w-[80vw] lg:w-[24rem] h-[5rem] text-center rounded-s-md placeholder-pink-300 text-xl font-bold text-pink-400`} placeholder='Persian translation here ...' />
-            <button onClick={(e)=>translateClickHandler(e)} className='w-[4rem] ps-3 text-md text-white hover:bg-pink-300 h-[5rem] rounded-md border-[6px] bg-pink-200 rounded-s-none border-s-0 border-pink-200'>
-              <Image src={magic} width={40} alt='magic translate' />
-            </button>
+            <TranslaterBtn sref={sref} inputData={inputData} setinputData={setinputData} />
           </div>
          
           <button onClick={(e)=>addClickHandler(e)} className='mt-[3rem] w-[16rem] h-[4rem] bg-pink-400 hover:bg-pink-300 text-white text-2xl rounded-full border-[6px] border-sky-200'>
