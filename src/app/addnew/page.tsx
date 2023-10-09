@@ -116,7 +116,7 @@ function Addnew() {
 
           </div>
          
-          <div className='flex rounded-xl border-[6px] mt-4 border-pink-300'>
+          <div className='flex rounded-xl border-[6px] mt-4 bg-pink-300 border-pink-300'>
             <input ref={sref} onChange={(e)=> sChangeHandler(e)} className={`${style.font} w-[80vw] lg:w-[24rem] h-[5rem] text-center rounded-s-md placeholder-pink-300 text-xl font-bold text-pink-400`} placeholder='Persian translation here ...' />
             <TranslaterBtn sref={sref} inputData={inputData} setinputData={setinputData} />
           </div>
